@@ -408,6 +408,23 @@ namespace TexGet
                 InsertSelecetion(false);
                 e.Handled = true;
             }
+            //Ctrl-Space -> open autocomplete list
+            else if (e.Key == Key.Space && Keyboard.Modifiers.HasFlag(ModifierKeys.Control))
+            {
+                int lastSlash = innerCodeBox.Text.LastIndexOf('\\', innerCodeBox.CaretIndex - 1);
+                //Debug.WriteLine(lastSlash, "lastSlash");
+
+                if (countNumberOfSlashesBefore(lastSlash + 1) % 2 == 1)
+                {
+                    Debug.WriteLine(getTypingCommand());
+                    RefreshSuggestions(getTypingCommand());
+                    suggestionPopup.PlacementTarget = innerCodeBox;
+                    suggestionPopup.PlacementRectangle = innerCodeBox.GetRectFromCharacterIndex(
+                        innerCodeBox.CaretIndex, true);
+                    suggestionPopup.IsOpen = true;
+                }
+                e.Handled = true;
+            }
             //Accept selected suggestion
             else if ((e.Key == Key.Enter || e.Key == Key.Space) && suggestionPopup.IsOpen)
             {

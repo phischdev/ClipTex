@@ -7,8 +7,8 @@
     <ProjectGuid>{BCB37E06-B511-4C5A-A319-D6D7A37A29BE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TexGet</RootNamespace>
-    <AssemblyName>TexGet</AssemblyName>
+    <RootNamespace>ClipTex</RootNamespace>
+    <AssemblyName>ClipTex</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

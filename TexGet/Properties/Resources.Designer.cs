@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TexGet.Properties {
+namespace ClipTex.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace TexGet.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TexGet.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ClipTex.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,73 @@ namespace TexGet.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die \\
-        ///\frac{}{}
+        ///   Sucht eine lokalisierte Zeichenfolge, die #Line breaks
+        ///\\
+        ///\kill
+        ///\noindent
+        ///#Math
+        ///\frac{•}{•}
         ///\int
         ///\sum
-        ///\mathbf{} ähnelt.
+        ///\sum_{•}^•
+        ///\mathbf{•}
+        ///\leq
+        ///\times
+        ///\circ
+        ///\infty
+        ///\supset
+        ///\subset
+        ///\cup
+        ///\dot •
+        ///\alpha
+        ///\epsilon
+        ///\theta
+        ///\lambda
+        ///\pi
+        ///\sqrt{•}
+        ///\sqrt[•]{•}
+        ///\prod
+        ///\prod_{•}^•
+        ///\lambda
+        ///\pi
+        ///\upsilon
+        ///\omega
+        ///\Lambda
+        ///\Upsilon
+        ///\geq
+        ///\div
+        ///\circ
+        ///\neg
+        ///\forall
+        ///\exists
+        ///\cap
+        ///\hat •
+        ///\beta
+        ///\zeta
+        ///\iota
+        ///\mu
+        ///\rho
+        ///\phi
+        ///\Gamma
+        ///\Xi
+        ///\Phi
+        ///\neq
+        ///\pm
+        ///\prime
+        ///\wedge
+        ///\in
+        ///\notin
+        ///\mid
+        ///\bar •
+        ///\gamma
+        ///\eta
+        ///\kappa
+        ///\nu
+        ///\sigma
+        ///\chi
+        ///\Delta
+        ///\Pi
+        ///\Ps [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
         /// </summary>
         internal static string LatexCommands {
             get {
