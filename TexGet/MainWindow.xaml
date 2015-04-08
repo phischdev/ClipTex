@@ -1,0 +1,38 @@
+﻿<Controls:MetroWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:local="clr-namespace:TexGet" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="TexGet.MainWindow"
+        Topmost="True"
+        Title="ClipTex" 
+        Height="300" 
+        Width="350" 
+        ShowInTaskbar="False"  
+        BorderThickness="1" 
+        BorderBrush="#FF008BFF" 
+        Closing="MetroWindow_Closing" 
+        ResizeMode="CanMinimize"
+        TitleCaps="False" 
+        IsWindowDraggable="False" 
+        EnableDWMDropShadow="True"  >
+	<Controls:MetroWindow.Resources>
+		<local:CommandMethods x:Key="ItemMethodsDataSource" d:IsDataSource="True"/>
+	</Controls:MetroWindow.Resources>
+	<Grid DataContext="{Binding Source={StaticResource ItemMethodsDataSource}}">
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition Height="140"/>
+		</Grid.RowDefinitions>
+		<TextBox x:Name="LaText" PreviewKeyDown="TextBox_PreviewKeyDown" Style="{DynamicResource placeHolderCodeBox}" PreviewTextInput="LaText_PreviewTextInput" />
+		<Viewbox Grid.Row="1" StretchDirection="DownOnly">
+			<Border Grid.Row="1" Height="Auto" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#FFAAAAAA" BorderThickness="1" Margin="5">
+				<Image x:Name="imgPreview" Stretch="None" />
+			</Border>
+		</Viewbox>
+		<Popup x:Name="suggestionPopup" StaysOpen="False" HorizontalAlignment="Left" MaxHeight="200" >
+			<Grid>
+				<ListBox x:Name="suggestionList" SelectedIndex="0" KeyDown="OnListKeyDown" MouseDoubleClick="suggestionList_MouseDoubleClick"/>
+			</Grid>
+		</Popup>
+	</Grid>
+</Controls:MetroWindow>

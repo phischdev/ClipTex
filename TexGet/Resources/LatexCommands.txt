@@ -1,0 +1,161 @@
+﻿#Line breaks
+\\
+\kill
+\noindent
+#Math
+\frac{•}{•}
+\int
+\sum
+\sum_{•}^•
+\mathbf{•}
+\leq
+\times
+\circ
+\infty
+\supset
+\subset
+\cup
+\dot •
+\alpha
+\epsilon
+\theta
+\lambda
+\pi
+\sqrt{•}
+\sqrt[•]{•}
+\prod
+\prod_{•}^•
+\lambda
+\pi
+\upsilon
+\omega
+\Lambda
+\Upsilon
+\geq
+\div
+\circ
+\neg
+\forall
+\exists
+\cap
+\hat •
+\beta
+\zeta
+\iota
+\mu
+\rho
+\phi
+\Gamma
+\Xi
+\Phi
+\neq
+\pm
+\prime
+\wedge
+\in
+\notin
+\mid
+\bar •
+\gamma
+\eta
+\kappa
+\nu
+\sigma
+\chi
+\Delta
+\Pi
+\Psi
+\approx
+\cdot
+\cdots
+\vee
+\rightarrow
+\Rightarrow
+\Leftrightarrow
+\tilde •
+\delta
+\varepsilon
+\vartheta
+\xi
+\tau
+\psi
+\Theta
+\Sigma
+\Omega
+\quad
+#Text
+#\begin{comment}
+\begin{quote}
+\begin{quotation}
+\begin{verse}
+#Lists
+\begin{enumerate}
+\begin{itemize}
+\begin{description}
+\item •
+\item[•] •
+#Floating bodies
+\begin{table}[•]
+\begin{figure}[•]
+\begin{equation}[•]
+\caption{•}
+#Text Properties
+\underline{•} 
+\emph{•}
+#
+\tiny
+\scriptsize
+\footnotesize
+\small
+\normalsize
+\large
+#Vebatim
+\begin{verbatim}
+\begin{verbatim*}
+\verb•••
+#Justification
+\begin{center}
+\begin{flushleft}
+\begin{flushright}
+\linespread{•}
+#Symbols
+\&
+\$
+\%
+\_
+\^{}
+\~{}
+\ldots
+\textbar
+\#
+\textbullet\textbackslash\S#Accents
+\‘o
+\.o
+\c c
+\OE
+\o
+\j
+\’o
+\"o
+\d o
+\ae
+\O
+#~‘
+\^o
+\c o
+\b o
+\AE
+\l
+#?‘\~o
+\v o
+\t oo
+\aa
+\L
+\=o\H o
+\oe\AA\i#Misc
+\today
+\@.
+\hspace{•}
+\vspace{•}
+\rule{•}{•}
+#Tabular
