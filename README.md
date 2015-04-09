@@ -10,8 +10,8 @@ My scenario is inserting formulas in the telegram desktop client.
 
 
 # Get it to work:
-A previously installed latex environment is needed.
-latex.exe is needed in PATH
+A previously installed latex environment is needed.<p>
+latex.exe is needed in PATH<p>
 dvips.exe is needed in PATH
 
 You may have an installed convert.exe. And it may be the wrong one. If ClipTex returns an error regarding convert.exe
