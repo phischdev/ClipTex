@@ -11,12 +11,12 @@ My scenario is inserting formulas in the telegram desktop client.
 
 # Get it to work:
 A previously installed latex environment is needed.<p>
-latex.exe is needed in PATH<p>
+latex.exe is needed in PATH<br>
 dvips.exe is needed in PATH
 
 You may have an installed convert.exe. And it may be the wrong one. If ClipTex returns an error regarding convert.exe
-try to remove convert.exe and install ImageMagick (don't uncheck 'add to Path').
+try to remove convert.exe and install ImageMagick (don't uncheck 'add to Path').<br>
 http://www.imagemagick.org/download/binaries/ImageMagick-6.9.1-0-Q16-x64-dll.exe
 
-Maybe ghostscript is also needed
+Maybe ghostscript is also needed<br>
 http://downloads.ghostscript.com/public/gs916w64.exe
