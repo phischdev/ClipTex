@@ -9,7 +9,8 @@ It's all about speed and comfortability, providing use by shortcuts, autocomplet
 My scenario is inserting formulas in the telegram desktop client.
 
 
-###Get it to work:
+
+####Get it to work:
 A previously installed latex environment is needed.<p>
 latex.exe is needed in PATH<br>
 dvips.exe is needed in PATH
