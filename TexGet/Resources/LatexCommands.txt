@@ -26,7 +26,6 @@
 \prod
 \prod_{•}^•
 \lambda
-\pi
 \upsilon
 \omega
 \Lambda
