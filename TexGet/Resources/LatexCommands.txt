@@ -5,7 +5,6 @@
 #Math
 \frac{•}{•}
 \int
-\int_•^•
 \sum
 \sum_{•}^•
 \mathbf{•}
@@ -84,7 +83,6 @@
 \Omega
 \quad
 #Text
-\begin{•}
 #\begin{comment}
 \begin{quote}
 \begin{quotation}
