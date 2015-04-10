@@ -470,19 +470,14 @@ namespace TexGet
         private void LaText_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             //Autimatically close open brackets
-            if (e.Text == "{")
+            if (e.Text == "{" || e.Text == "(" || e.Text == "[")
             {
-                InsertLatex("{}", 1);
-                e.Handled = true;
-            }
-            else if (e.Text == "(")
-            {
-                InsertLatex("()", 1);
-                e.Handled = true;
-            }
-            else if (e.Text == "[")
-            {
-                InsertLatex("[]", 1);
+                string closeBraket =
+                    e.Text == "{" ? "}" :
+                    e.Text == "(" ? ")" :
+                    e.Text == "[" ? "]" : "xx";
+                DeleteSelected();
+                InsertLatex(e.Text + closeBraket, 1);
                 e.Handled = true;
             }
             else if (e.Text == ")" || e.Text == "]" || e.Text == "}")
@@ -492,7 +487,22 @@ namespace TexGet
                     e.Handled = true;
                     innerCodeBox.CaretIndex += 1;
                 }
-                    
+                else
+                {
+                    e.Handled = true;
+                    InsertLatex(e.Text, 1);
+                }
+                if (e.Text == "}")
+                {
+                    var begin = innerCodeBox.Text.LastIndexOf("\\begin{");
+                    if (begin > -1)
+                    {
+                        var command = innerCodeBox.Text.Substring(begin, innerCodeBox.CaretIndex - begin);
+                        var innertext = getBegginer(command);
+                        if (innertext.All(c => Char.IsLetter(c) || c == '*'))
+                            InsertEndForBegin(command, innerCodeBox.CaretIndex);
+                    }
+                }
             }
             //Refresh suggestions if needed
             if (suggestionPopup.IsOpen)
@@ -523,6 +533,18 @@ namespace TexGet
             }
         }
 
+        /// <summary>
+        /// simply deletes selected Text, if existing
+        /// </summary>
+        private void DeleteSelected()
+        {
+            if (innerCodeBox.SelectionLength > 0)
+            {
+                int start = innerCodeBox.SelectionStart;
+                innerCodeBox.Text = innerCodeBox.Text.Remove(innerCodeBox.SelectionStart, innerCodeBox.SelectionLength);
+                innerCodeBox.CaretIndex = start;
+            }            
+        }
         /// <summary>
         /// returns the commmand the user is currently writing. In this implementation it returs all the "text" after a '\'
         /// </summary>
@@ -619,17 +641,39 @@ namespace TexGet
             innerCodeBox.CaretIndex = begin + command.Length;
             
             //add end{} for begin{}
-            if (final && command.StartsWith("\\begin{"))
+            if (final && command.StartsWith("\\begin{") && command != ("\\begin{•}"))
             {
-                String beginner = command.Substring("\\begin{".Length, command.Length - "\\begin{".Length - 1);
-                String ender = "\\end{" + beginner + "}";
-                innerCodeBox.Text = innerCodeBox.Text.Insert(innerCodeBox.CaretIndex, ender);
+                InsertEndForBegin(command, innerCodeBox.CaretIndex);
                 if (firstPlaceholder == -1) innerCodeBox.CaretIndex = begin + command.Length;
             }
 
             //select first placeholder
             if (final && firstPlaceholder > 0) innerCodeBox.Select(begin + firstPlaceholder, 1);
             if (final) innerCodeBox.Focus();
+        }
+
+        /// <summary>
+        /// inserts an \end{..} for a given \begin{..}
+        /// </summary>
+        /// <param name="command">the begin command</param>
+        /// <param name="insertPosition">position to insert the \end-command</param>
+        private void InsertEndForBegin(String command, int insertPosition)
+        {
+            if (!command.StartsWith("\\begin{")) throw new Exception("not a begin command");
+            String beginner = getBegginer(command);
+            String ender = "\\end{" + beginner + "}";
+            InsertLatex(ender, 0);
+        }
+
+        /// <summary>
+        /// extracts the name of the begin-Block out of a command
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        private String getBegginer(String command)
+        {
+            if (!command.StartsWith("\\begin{")) throw new Exception("not a begin command");
+            return command.Substring("\\begin{".Length, command.Length - "\\begin{".Length - 1);
         }
 
         //If user selects the listbox instead of the textField by accident

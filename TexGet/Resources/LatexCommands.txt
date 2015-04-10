@@ -84,6 +84,7 @@
 \Omega
 \quad
 #Text
+\begin{•}
 #\begin{comment}
 \begin{quote}
 \begin{quotation}
