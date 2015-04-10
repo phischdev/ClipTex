@@ -5,6 +5,7 @@
 #Math
 \frac{•}{•}
 \int
+\int_•^•
 \sum
 \sum_{•}^•
 \mathbf{•}
@@ -127,7 +128,10 @@
 \ldots
 \textbar
 \#
-\textbullet\textbackslash\S#Accents
+\textbullet
+\textbackslash
+\S
+#Accents
 \‘o
 \.o
 \c c
@@ -145,13 +149,18 @@
 \b o
 \AE
 \l
-#?‘\~o
+#?‘
+\~o
 \v o
 \t oo
 \aa
 \L
-\=o\H o
-\oe\AA\i#Misc
+\=o
+\H o
+\oe
+\AA
+\i
+#Misc
 \today
 \@.
 \hspace{•}
