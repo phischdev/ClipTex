@@ -18,7 +18,7 @@ dvips.exe is needed in PATH
 
 You may have an installed convert.exe. And it may be the wrong one. If ClipTex returns an error regarding convert.exe
 try to remove convert.exe and install ImageMagick (don't uncheck 'add to Path').<br>
-http://www.imagemagick.org/download/binaries/ImageMagick-6.9.1-0-Q16-x64-dll.exe
+http://www.imagemagick.org/script/binary-releases.php#windows
 
 Maybe ghostscript is also needed<br>
-http://downloads.ghostscript.com/public/gs916w64.exe
+http://www.ghostscript.com/download/gsdnld.html
