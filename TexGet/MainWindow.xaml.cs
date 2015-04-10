@@ -65,6 +65,11 @@ namespace TexGet
                 {
                     Close();
                 }));
+            menu.MenuItems.Add(new System.Windows.Forms.MenuItem("Settings",
+                (o, e) =>
+                {
+
+                }));
 
             myIcon.ContextMenu = menu;
             myIcon.Visible = true;
@@ -492,13 +497,16 @@ namespace TexGet
                     e.Handled = true;
                     InsertLatex(e.Text, 1);
                 }
+                //in case an opened \begin needs to be \end-ed
                 if (e.Text == "}")
                 {
                     var begin = innerCodeBox.Text.LastIndexOf("\\begin{");
+                    //if begin{..} exists somewhere
                     if (begin > -1)
                     {
                         var command = innerCodeBox.Text.Substring(begin, innerCodeBox.CaretIndex - begin);
                         var innertext = getBegginer(command);
+                        //only tetters and * allowed between opening bracket of begin{.. and THIS closing bracket
                         if (innertext.All(c => Char.IsLetter(c) || c == '*'))
                             InsertEndForBegin(command, innerCodeBox.CaretIndex);
                     }
