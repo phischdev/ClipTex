@@ -38,14 +38,15 @@ namespace TexGet
 
         public static IEnumerable<String> getCommands(String filter)
         {
-            if (filter == "") 
+            if (filter == "")
                 return allCommands();
-
-            var newCommands =
-                allCommands().Where(
-                    c => c.Replace(placeHolder.ToString(), "").StartsWith(filter,
-                                                                          StringComparison.OrdinalIgnoreCase));
-            return newCommands;
+            else
+            {
+                var best = allCommands().Where(c => c.Replace(placeHolder.ToString(), "").StartsWith(filter, StringComparison.OrdinalIgnoreCase));
+                var loose = allCommands().Where(c => c.Replace(placeHolder.ToString(), "").ToLower().Contains(filter.Remove(0, 1).ToLower()));
+                loose = loose.Except(best);
+                return best.Concat(loose);
+            }
         }
     }
 

@@ -18,6 +18,8 @@ using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System.Windows.Interop;
 
+using ClipTex;
+
 namespace TexGet
 {
     /// <summary>
@@ -49,10 +51,13 @@ namespace TexGet
             //Setup Icon
             myIcon.MouseClick += (o, e) => 
             {
-                if (this.IsVisible)
-                    this.Hide();
-                else
-                    open();
+                if (e.Button == System.Windows.Forms.MouseButtons.Left)
+                {
+                    if (this.IsVisible)
+                        this.Hide();
+                    else
+                        open();
+                }
             };
 
             var iconStream = Application.GetResourceStream(new Uri("pack://application:,,,/Resources/latex32.ico")).Stream;
@@ -64,6 +69,12 @@ namespace TexGet
                 (o, e) =>
                 {
                     Close();
+                }));
+            menu.MenuItems.Add(new System.Windows.Forms.MenuItem("Settings",
+                (o, e) =>
+                {
+                    SettingsWindow settings = new SettingsWindow();
+                    settings.ShowDialog();
                 }));
 
             myIcon.ContextMenu = menu;
@@ -193,7 +204,7 @@ namespace TexGet
                 String imagePath = buildLatex(workingDirectory: tempDir, 
                                               inputFile: fileName, 
                                               format: "png", 
-                                              resolution: "100x100", 
+                                              resolution: String.Format("{0}x{0}", ClipTex.Properties.Settings.Default.pngResolution), 
                                               AntiAlias: true, 
                                               Transparent: false);
 
@@ -235,25 +246,19 @@ namespace TexGet
 
         private string prepareFormula(string p, string backColor, string textColor, Boolean mathMode)
         {
-            String tex = "\\documentclass[12pt]{article}" + "\r\n" +
-                          "\\usepackage{color}" + "\r\n" +
-                          "\\usepackage{amsmath}" + "\r\n" +
-                          "\\usepackage[dvips]{graphicx}" + "\r\n" +
-                          "\\pagestyle{empty}" + "\r\n";
-            tex += "\\pagecolor{" + backColor + "}" + "\r\n" +
-                   "\\begin{document}" + "\r\n" +
-                   "{\\color{" + textColor + "}" + "\r\n";
+            String placeholder = "### my latex code ###";
+            var präambel = ClipTex.Properties.Settings.Default.Präambel;
+            int location = präambel.IndexOf(placeholder);
+            if (location == -1)
+                throw new Exception(placeholder + " (place to insert your latex code) couldn't be found");
 
+            String tex = LaText.Text;
             if (mathMode)
-                tex += "\\begin{eqnarray*}" + "\r\n";
+            {
+                tex = tex.Insert(0, "\\begin{equation*}" + "\r\n") + "\r\n" + "\\end{equation*}";
+            }
 
-            tex += LaText.Text;
-
-            if (mathMode)
-                tex += "\\end{eqnarray*}}" + "\r\n";
-
-            tex += "\\end{document}";
-            return tex;
+            return präambel.Remove(location, placeholder.Length).Insert(location, tex);
         }
 
         private String buildLatex(String workingDirectory, String inputFile, String format, String resolution, Boolean AntiAlias, Boolean Transparent, String transparentColor = "")
@@ -371,6 +376,7 @@ namespace TexGet
             //Render latex png
             else if (e.Key == Key.Enter && Keyboard.Modifiers.HasFlag(ModifierKeys.Control))
             {
+                e.Handled = true;
                 String error = null;
                 try
                 {
@@ -492,13 +498,16 @@ namespace TexGet
                     e.Handled = true;
                     InsertLatex(e.Text, 1);
                 }
+                //in case an opened \begin needs to be \end-ed
                 if (e.Text == "}")
                 {
                     var begin = innerCodeBox.Text.LastIndexOf("\\begin{");
+                    //if begin{..} exists somewhere
                     if (begin > -1)
                     {
                         var command = innerCodeBox.Text.Substring(begin, innerCodeBox.CaretIndex - begin);
                         var innertext = getBegginer(command);
+                        //only tetters and * allowed between opening bracket of begin{.. and THIS closing bracket
                         if (innertext.All(c => Char.IsLetter(c) || c == '*'))
                             InsertEndForBegin(command, innerCodeBox.CaretIndex);
                     }
