@@ -42,8 +42,11 @@ namespace TexGet
                 return allCommands();
             else
             {
+                //suggestions with 'filter' at the begin
                 var best = allCommands().Where(c => c.Replace(placeHolder.ToString(), "").StartsWith(filter, StringComparison.OrdinalIgnoreCase));
+                //suggestions that contain 'filter'
                 var loose = allCommands().Where(c => c.Replace(placeHolder.ToString(), "").ToLower().Contains(filter.Remove(0, 1).ToLower()));
+                //no duplicates
                 loose = loose.Except(best);
                 return best.Concat(loose);
             }
