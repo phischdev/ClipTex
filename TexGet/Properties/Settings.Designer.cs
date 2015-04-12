@@ -22,5 +22,29 @@ namespace ClipTex.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int pngResolution {
+            get {
+                return ((int)(this["pngResolution"]));
+            }
+            set {
+                this["pngResolution"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Präambel {
+            get {
+                return ((string)(this["Präambel"]));
+            }
+            set {
+                this["Präambel"] = value;
+            }
+        }
     }
 }

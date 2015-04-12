@@ -61,6 +61,15 @@ namespace ClipTex.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die 100 ähnelt.
+        /// </summary>
+        internal static string DefaultResolution {
+            get {
+                return ResourceManager.GetString("DefaultResolution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die #Line breaks
         ///\\
         ///\kill
@@ -89,7 +98,6 @@ namespace ClipTex.Properties {
         ///\prod
         ///\prod_{•}^•
         ///\lambda
-        ///\pi
         ///\upsilon
         ///\omega
         ///\Lambda
@@ -127,11 +135,40 @@ namespace ClipTex.Properties {
         ///\chi
         ///\Delta
         ///\Pi
-        ///\Ps [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        ///\Psi
+        ///\approx
+        ///\cdot
+        ///\cdots
+        ///\vee
+        ///\rightarrow
+        ///\Rightarrow
+        ///\Leftrightarrow
+        ///\t [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
         /// </summary>
         internal static string LatexCommands {
             get {
                 return ResourceManager.GetString("LatexCommands", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die \documentclass[12pt]{article}
+        ///\usepackage{color}
+        ///\usepackage{amsmath}
+        ///\usepackage[dvips]{graphicx}
+        ///\pagestyle{empty}
+        ///\pagecolor{white}
+        ///
+        ///\begin{document}
+        ///\color{black}
+        ///
+        ///### my latex code ###
+        ///
+        ///\end{document} ähnelt.
+        /// </summary>
+        internal static string StandardPräambel {
+            get {
+                return ResourceManager.GetString("StandardPräambel", resourceCulture);
             }
         }
     }

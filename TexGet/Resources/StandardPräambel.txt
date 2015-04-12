@@ -1,0 +1,13 @@
+\documentclass[12pt]{article}
+\usepackage{color}
+\usepackage{amssymb,amsmath}
+\usepackage[dvips]{graphicx}
+\pagestyle{empty}
+\pagecolor{white}
+
+\begin{document}
+\color{black}
+
+### my latex code ###
+
+\end{document}
