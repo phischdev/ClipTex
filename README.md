@@ -1,4 +1,4 @@
-# ClipTex
+# ClipTex mini IDE
 A comfortable mini IDE for Latex. The rendered image is always saved to the clipboard as a .png. Handy for using latex in chats.
 
 The program is written in C# for use under Windows.
