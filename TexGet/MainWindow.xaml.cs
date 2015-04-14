@@ -134,6 +134,7 @@ namespace TexGet
         {
             position();
             this.Show();
+            this.Focus();
             innerCodeBox.Focus();
         }
 
@@ -180,12 +181,10 @@ namespace TexGet
         #region Latex
         private void Render(bool mathMode)
         {
-            String backColor = "white";
-            String textColor = "black";
-            String tex = prepareFormula(LaText.Text, backColor, textColor, mathMode);
+            String tex = prepareFormula(LaText.Text, mathMode);
 
             //Create temporary directory
-            String tempDir = Path.Combine(Directory.GetCurrentDirectory(), "temp");
+            String tempDir = Path.Combine(Path.GetTempPath(), "ClipTex", "temp");
             Directory.CreateDirectory(tempDir);
 
             //Create Latex file
@@ -244,7 +243,7 @@ namespace TexGet
             }
         }
 
-        private string prepareFormula(string p, string backColor, string textColor, Boolean mathMode)
+        private string prepareFormula(string p, Boolean mathMode)
         {
             String placeholder = "### my latex code ###";
             var präambel = ClipTex.Properties.Settings.Default.Präambel;
